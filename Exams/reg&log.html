@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login</title>
+	<style type="text/css">
+		body{
+			width: 100%;
+			background-color: #8F8A83;
+			padding: 0px;
+			margin: 0px;
+		}
+		*{
+			font-family: sans-serif;
+		}
+		.main{
+			margin-top: 150px;
+			width: 450px;
+			height:300px;
+			background-color:#CFCCC8;
+			border: 1px solid white;
+			border-radius: 10px;
+			box-shadow: 0px 0px 20px 1px black;
+			margin-left: 33%;
+		}
+		.main div{
+			padding-top: 20px;
+			padding-left: 10px;
+		}
+		.main div b{
+			color: #fd8f29;
+			text-shadow:1px 1px 1px #fd8f29;
+			font-size: 30px;
+
+		}
+		.row{
+			display: flex;
+			flex-direction: row;
+			width: 80%;
+			border: 1px solid;
+			height: 40px;
+			padding: 0px;
+		}
+		.form-label{
+			width: 20%;
+		}
+		.form-control{
+
+			width: 70%;
+		}
+		input[type=text]{
+
+			width: 70%;
+			height: 30px;
+			border: 1px solid #fff;
+			border-radius: 60px;
+			background-color: #e9eef2;
+			font-weight: bold;
+			text-indent: 20px;
+		}
+		
+		input[type=submit]{
+			width: 71%;
+			height: 30px;
+			background-color: orange;
+			border-radius: 60px;
+			border: 1px solid orange;
+			margin-left: 57px;
+			margin-top: 20px;
+			font-weight: bold;
+		}
+		input[type=submit]:hover{
+			border: 1px solid black;
+		}
+		.warn{
+			font-size: 13px;
+			color: red;
+			font-weight: bold;
+			margin-left: 180px;
+			display: none;
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div style="height: 50px;background-color: #393939;border-radius: 10px 10px 0% 0%;padding-left: 120px;">
+			<b>Getting started</b>
+		</div>
+		<div id="container">
+			<form id="form" onsubmit="return validate()">
+				<button>Sign</button>
+				
+			</form>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function validate(){
+			id=document.getElementById("id").value
+			pat=/^N18[1|0]\d{3}$/i
+			if(pat.test(id)){
+				document.getElementById("errorID").style.display="none";
+				document.getElementById("validID").style.display="block";
+			}
+			else{
+				document.getElementById("errorID").style.display="block";
+				document.getElementById("validID").style.display="none";
+			}
+			
+			
+			return false
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Login</title>
+	<style type="text/css">
+		body{
+			width: 100%;
+			background-color: #8F8A83;
+			padding: 0px;
+			margin: 0px;
+		}
+		*{
+			font-family: sans-serif;
+		}
+		.main{
+			margin-top: 10px;
+			width: 450px;
+			height:430px;
+			background-color:#CFCCC8;
+			border: 1px solid white;
+			border-radius: 10px;
+			box-shadow: 0px 0px 20px 1px black;
+			margin-left: 33%;
+			
+		}
+		.main div{
+			padding-top: 20px;
+			padding-left: 10px;
+		}
+		.main div b{
+			color:#000;
+			
+			font-size: 30px;
+
+		}
+		.row{
+			display: flex;
+			flex-direction: row;
+			width: 80%;
+			border: 1px solid;
+			height: 40px;
+			padding: 0px;
+		}
+		.form-label{
+			width: 20%;
+		}
+		.form-control{
+
+			width: 70%;
+		}
+		input[type=text],input[type=password]{
+
+			width: 70%;
+			height: 30px;
+			border: 1px solid #fff;
+			border-radius: 60px;
+			background-color: #e9eef2;
+			font-weight: bold;
+			text-indent: 20px;
+		}
+		#forgot{
+			font-size: 14px;
+			margin-left: 165px;
+			padding: 0px;
+			color: #3c4852;
+			margin-top: 10px;
+			/*border: 1px solid;*/
+			width: 45%;
+		}
+		#forgot a{
+			color: black;
+			font-weight: bold;
+			text-decoration: underline;
+
+		}
+		input[type=submit]{
+			width: 71%;
+			height: 30px;
+			background-color: orange;
+			border-radius: 60px;
+			border: 1px solid orange;
+			margin-left: 57px;
+			margin-top: 33px;
+			font-weight: bold;
+		}
+		input[type=submit]:hover{
+			border: 1px solid black;
+		}
+		#signup{
+			/*border: 1px solid;*/
+			width: 35%;
+			height: 20px;
+			padding: 0px;
+			font-size: 14px;
+			position: relative;
+			top: 65px;
+			left: 140px;
+		}
+		#go{
+			width: 35%;
+			height: 20px;
+			padding: 0px;
+			font-size: 14px;
+			position: relative;
+			color: black;
+			font-weight: bold;
+			top: 70px;
+			left: 160px;
+			text-decoration:none;
+		}
+		#go a{
+			text-decoration: none;
+		}
+		#go a:hover{
+			text-decoration: underline;
+		}
+		.warn{
+			font-size: 11px;
+			color: red;
+			font-weight: bold;
+			/*border: 1px solid;*/
+			margin-left: 75px;
+			display: none;
+		}
+		#alert{
+			font-size: 14px;
+		}
+		@media screen and (max-width: 600px)
+		{
+			.main{
+				margin-left: 3%;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div class="main">
+		<div style="height: 50px;padding-left: 170px;">
+			<b>Sign in</b>
+		</div>
+		<hr>
+		<div id="container">
+			<form id="form" onsubmit="return validate()">
+				<label class="warn" id="alert" style="margin-left: 160px;color: green;font-weight: bold;">Success login &check;</label>
+				<input style="margin-left:57px ;margin-top: 10px;" id="name" type="text" name="username" placeholder="Username"><br>
+				<label class="warn" id="errorUSER">*required field</label>
+				<input style="margin-left:57px ;margin-top: 20px;" id="pass" type="password" name="pass" placeholder="Password">
+				<label  class="warn" id="errorPASS">*required field</label>
+				<div  id="forgot">Forgot <a href="reg.html">Username/Password?</a></div>
+				<input type="submit" name="submit" value="Log in">
+				<div id="signup">Don't have an account?</div>
+				<div id="go"><a href="reg.html">SIGN UP NOW</a></div>
+			</form>
+		</div>
+	</div>
+	
+	<script type="text/javascript">
+		DataBase={user1:'Sunil@123',
+		  user2:'Linue@333',
+		  user3:'Rgukt@123',
+		  user4:'IIit@698',
+		  user5:'Sunny@333'
+		 }
+		function validate(){
+			var user=document.getElementById("name").value;
+			var pass=document.getElementById("pass").value;
+			if(user in DataBase){
+				if(pass==DataBase[user]){
+					var k=document.getElementById("alert");
+					k.style.display="block"
+					k.innerText="Login Success"
+					k.style.color="green"
+				}
+				else{
+					var k=document.getElementById("alert");
+					k.style.display="block"
+					k.innerText="Invalid Credentials"
+					k.style.color="red"
+					
+				}
+			}
+			else{
+				document.getElementsByClassName("warn")[1].style.display="block";
+				document.getElementsByClassName("warn")[2].style.display="block";	
+
+			}
+			
+			setTimeout(errorFREE,3000);
+			return false
+		}
+		function errorFREE(){
+			document.getElementsByClassName("warn")[0].style.display="none";
+			document.getElementsByClassName("warn")[1].style.display="none";
+			document.getElementsByClassName("warn")[2].style.display="none";
+		}
+	</script>
+</body>
+</html>

@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Registration Form</title>
+	<link rel="stylesheet" type="text/css" href="frm.css">
+	<style type="text/css">
+		input[type=checkbox]{
+			width: 10%;
+			height: auto;
+
+		}
+
+		*{
+			list-style-type: none;
+		}
+		input[type=radio]:checked{
+			background-color: #000;
+		}
+		#hobtext{
+			position: relative;
+		}
+		#opadd{
+			position: absolute;
+			left: 229px;
+			background-color: #fd8f29;
+			border-radius:0px 5px 5px 0px;
+			border: 1px solid gray;
+			height: 20px;
+			margin: 2px 0px;
+			/*box-shadow: 1px 1px 1px black;*/
+		}
+		
+		#list li{
+			background-color: #fd8f29;
+			height: 16px;
+			width: 150px;
+			border: 1px solid;
+			border-radius: 10px;
+			position: relative;
+			padding-left: 50px;
+			padding-top: 3px;
+			padding-bottom: 3px;
+			margin-bottom: 2px;
+		}
+		/*input[type=checkbox]:before{
+			padding: 1px 3px;
+			content: "\2713";
+			font-size: 8px;
+			border: 1px solid gray;
+			border-radius: 2px;
+			position: relative;
+			top: -4.5px;
+			left: 14px;
+			background-color: #fff;
+			color: white;
+			font-weight: bold;
+		}
+		input[type=checkbox]:checked:before{
+			background-color: #fd8f29;
+			color: #000;
+		}*/
+		fieldset{
+			margin-top: 0px;
+			width: 70%;
+		}
+		.delete{
+			position: absolute;
+			top: 0px;
+			right: -2px;
+			height: 22px;
+			border-radius:0px 10px 10px 0px;
+			background-color: black;
+			color: wheat;
+		}
+		.delete:hover{
+			background-color: red;
+		}
+		#sub{
+			background-color:#fd8f29 ;
+			border: 1px solid;
+			width: 100px;
+			height: 30px;
+			margin: 30px 0px 30px 70px;
+		}
+		#sub:hover{
+			background-color: green;
+		}
+		input[type=reset]{
+			background-color:#fd8f29 ;
+			border: 1px solid;
+			width: 100px;
+			height: 30px;
+			margin-left: 130px;
+			margin-top: 30px;	
+		}
+		#res:hover{
+			background-color: red;
+		}
+		#add{
+			background-color: #fd8f29;
+		}
+		#pwd{
+			position: relative;
+		}
+		#passimage{
+			position: absolute;
+			left: 340px;
+			top: 2px;
+		}
+		.warn{
+			color:red;
+			font-size: 12px;
+			font-weight: bold;
+			visibility: hidden;
+		}
+		span{
+			position: relative;
+			top: -1px;
+		}
+		.terms:before{
+			left: 10px !important;
+		}
+		.terms{
+			margin-top: 9px;
+		}
+	</style>
+	<script type="text/javascript">
+		
+		function validate(){
+			alert("Are you sure to you want to submit!!!");
+			var c=0;
+			var fval=document.getElementById("first").value;
+			var lval=document.getElementById("last").value;
+			var mval=document.getElementById("middle").value;
+			var country=document.getElementById('count').value;
+			var ph=document.getElementById('num').value;
+			var mail=document.getElementById("mail").value;
+			var pass=document.getElementById("pswd").value;
+			var f=document.getElementById("f").files[0];
+			
+			pat=/[0-9`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+			indPat=/^[6-9]\d{8}\d$/;
+			usaPat=/\d{3}-\d{3}-\d{4}/;
+			mailPat=/^[a-z][a-z0-9]+@[a-z]+\.([a-z]+\.)?[a-z]+$/i;
+			if(fval.length<3 || pat.test(fval)){
+				c=c+1;
+				document.getElementById("errorFN").style.visibility="visible";
+			}
+			if(lval.length<3 || pat.test(lval)){
+				c=c+1;
+				document.getElementById("errorLN").style.visibility="visible";
+			}
+			if(mval.length>0){
+				if(mval.length<3 || pat.test(mval)){
+					c=c+1;
+					document.getElementById("errorMN").style.visibility="visible";
+				}
+			}
+			if(country=='USA'){
+				if(usaPat.test(ph)==false){
+					c=c+1;
+					document.getElementById("errorPH").style.visibility="visible";
+				}
+			}
+			if(country=='Ind'){
+				if(indPat.test(ph)==false){
+					c=c+1;
+					document.getElementById("errorPH").style.visibility="visible";
+				}
+			}
+			if(pass.length<6 || !(/[a-z]/.test(pass)) || !(/[A-Z]/.test(pass)) || !(/\d/.test(pass)) || !(/\W/.test(pass))){
+				c=c+1;
+				document.getElementById("errorPASS").style.visibility="visible";
+			}
+			if(mailPat.test(mail)==false){
+				c=c+1;
+				document.getElementById("errorMAIL").style.visibility="visible";
+			}
+			// var arr=["c1","c2","c3","c4"];
+			// var checkCount=0;
+			// for(let i=0;i<4;i++){
+			// 	if(document.getElementById(arr[i]).checked){
+			// 		checkCount++;
+			// 	}
+			// }
+
+			// if(checkCount<2){
+			// 	c=c+1;
+			// }
+			if(f!=undefined && f.size>50480){
+				c=c+1;
+				document.getElementById("errorFILE").style.visibility="visible";
+			}
+			// setTimeout(errorFREE,3000);
+
+			if(c==0){
+				return true;
+			}
+			else{
+				return false;
+			}
+
+			
+		}
+		function addhobby(e){
+			e.preventDefault();
+			hob=document.getElementById("hob").value;
+			list=document.getElementById("hobby-list");
+			new_Li=document.createElement("li");
+			list.append(new_Li);
+			list.lastChild.innerHTML=hob;
+		}
+		function errorFREE(){
+			// document.getElementsByClass("warn").style.visibility="hidden";
+
+			document.getElementById("errorFN").style.visibility="hidden";
+			document.getElementById("errorLN").style.visibility="hidden";
+			document.getElementById("errorMN").style.visibility="hidden";
+			document.getElementById("errorPH").style.visibility="hidden";
+			document.getElementById("errorPASS").style.visibility="hidden";
+			document.getElementById("errorMAIL").style.visibility="hidden";
+			document.getElementById("errorFILE").style.visibility="hidden";
+		}
+		function fullname(){
+			var fval=document.getElementById("first").value;
+			var lval=document.getElementById("last").value;
+			var mval=document.getElementById("middle").value;
+			document.getElementById("full").value=(fval+" "+mval+" "+lval);
+		}
+		function getAge() {
+			var present=new Date();
+			var actual=new Date(document.getElementById("dob").value);
+			var s=present.getFullYear()-actual.getFullYear();
+			document.getElementById("age").value=s;
+
+		}
+		function changepass(){
+			var temp=document.getElementById("pswd");
+			if(temp.type=='password'){
+				temp.type="text";
+				document.getElementById("passimage").src="hide.jpg"
+			}
+			else{
+				temp.type="password";
+				document.getElementById("passimage").src="show.jpg"
+			}
+		}
+		function go() {
+			var j=document.getElementById("maincheck").checked;
+			if(j){
+				document.getElementById("sub").disabled=false;
+			}
+			else{
+				document.getElementById("sub").disabled=true;	
+			}
+		}
+		function resetConfirm(){
+			alert("Do you want to reset . . . Sure about that!!!");
+		}
+		function omitDigit(){
+			var val=document.getElementById("adrs").value;
+			var num=val.replace(/[0-9]/g,'');
+			document.getElementById('adrs').value=num;
+
+		}
+		function filesize(){
+			alert("file")
+			var f=document.getElementById("f").files[0];
+			if(f!=undefined && f.size>20480){
+				alert("file size is too big");
+			}
+		}
+	</script>
+</head>
+<body>
+		<div class="main">
+			<div style="height: 100px;">
+				<div style="padding:5% 0% 0% 20%;"><b style="font-size: 30px;">Student Registration Form</b></div>
+			</div>
+			<hr/>
+			<div style="margin-top: 30px;">
+				<form action="sunil.php" method="post" id="main-form" onsubmit="return validate()">
+					<div class="row">
+						
+						<div class="form-control">
+							<input type="text" id="first"><br>
+							<label class="warn" id="errorFN">*invalid name</label>
+							<input type="text" id="middle"><br>
+							<label class="warn" id="errorMN">*invalid name</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-label">
+							<label>Middle Name  :</label>
+						</div>
+						<div class="form-control">
+							
+							<label class="warn" id="errorMN">*invalid name</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-label">
+							<label>Last Name  :</label>
+						</div>
+						<div class="form-control">
+							<input type="text" id="last"><br>
+							<label class="warn" id="errorLN">*invalid name</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-label">
+							<label>Full Name  :</label>
+						</div>
+						<div class="form-control">
+							<input type="text" id="full" onfocus="fullname()" readonly>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-label">
+							<label>Country Code  :</label>
+						</div>
+						<div class="form-control">
+							<select id="count">
+								<option style="text-align:center;">USA</option>
+								<option style="text-align:center">Ind</option>
+							</select>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-label">
+							<label>Phone Number :</label>
+						</div>
+						<div class="form-control">
+							<input id="num" type="number"><br>
+							<label class="warn" id="errorPH">*invalid number format</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-label">
+							<label>Date of Birth :</label>
+						</div>
+						<div class="form-control">
+							<input type="date" id="dob">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-label">
+							<label>Age :</label>
+						</div>
+						<div class="form-control">
+							<input onfocus="getAge()" type="number" id="age">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-label">
+							<label>Password :</label>
+						</div>
+						<div class="form-control" id="pwd">
+							<input type="Password" id="pswd">
+							<img id="passimage" src="hide.jpg" style="border-radius: 10px;height: 20px;width: 20px;margin-bottom:-3px;" onclick="changepass()">
+							<img id="infoimg" src="info.png" style="border-radius: 10px;height: 20px;width: 20px;margin-bottom:-3px;" 
+							title="Atleast one special character,one digit,one alphabet"><br>
+							<label class="warn" id="errorPASS">*invalid password</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-label">
+							<label>Photo :</label>
+						</div>
+						<div class="form-control">
+							<input onchange="filesize()" type="file" id="f"><br>
+							<label class="warn" id="errorFILE">*file size is too big(>20KB)!!</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-label">
+							<label>Gender :</label>
+						</div>
+						<div class="form-control">
+							Male <input style="width:10%;height: 1rem;" type="radio" name="g">
+							Female <input type="radio" style="height: 1rem;width:10%" name="g">
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-label">
+							<label>Email :</label>
+						</div>
+						<div class="form-control">
+							<input type="email" id="mail"><br>
+							<label class="warn" id="errorMAIL">*invalid email</label>
+						</div>
+					</div>
+					<div class="row">
+						<div class="form-label">
+							<label>Address :</label>
+						</div>
+						<div class="form-control">
+							<textarea id="adrs" onkeyup="omitDigit()"></textarea>
+						</div>
+					</div>
+					<div class="row">
+						<div style="margin-top: 20px;" class="form-label">
+							<label>Hobbies :</label>
+						</div>
+						
+						<div class="form-control" id="hobtext">
+							<fieldset>
+							<input type="text" id="hob" name=""><button id="opadd">ADD</button>
+							<ul id="list">
+								<li>Cricket<button class="delete">X</button></li>
+							</ul>
+							</fieldset>
+						</div>
+					</div>
+					<div class="row" style="margin-top:20px">
+						<div class="form-control" style="width:40%;margin-right: -100px;">
+							<input class="terms" type="checkbox" id="maincheck" onclick="go()">
+						</div>
+						<div class="form-label" style="width:50%;margin-left: -200px;padding-top: 4px;">
+							<label>I Agree the terms and Conditions</label>
+						</div>
+					</div>
+					<div style="display: flex;flex-direction: row;">
+						<div class="b1">
+							<input type="submit" id="sub" value="Register" disabled>
+						</div>
+						<div class="b1">
+							<input  type="reset" id="res" value="Clear">
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+		<script type="text/javascript">
+			var add=document.getElementById("opadd");
+			add.addEventListener("click",additem,false);
+			var list=document.getElementById("list");
+			list.addEventListener("click",removeitem,false);
+			function additem(e){
+				e.preventDefault();
+				var f=document.getElementById("hob").value;
+				var l=document.createElement("li");
+				var text=document.createTextNode(f);
+				l.appendChild(text)
+
+				//button
+				var dbtn=document.createElement("button");
+				dbtn.setAttribute("class","delete");
+				var dtext=document.createTextNode("X");
+				dbtn.appendChild(dtext);
+
+				l.appendChild(dbtn);
+				
+				list.appendChild(l);
+			}
+			function removeitem(e){
+				e.preventDefault();
+				if(e.target.classList.contains("delete")){
+					if(confirm("Are you sure you want to delete")){
+						var li=e.target.parentElement;
+						list.removeChild(li);
+					}
+				}
+				
+			}
+		</script> 
+		
+</body>
+</html>

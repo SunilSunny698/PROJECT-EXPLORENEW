@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Registration Form</title>
+	<link rel="stylesheet" type="text/css" href="formstyle.css">
+	<style type="text/css"></style>
+</head>
+<body>
+	<div class="main">
+		<div style="height: 50px;padding-left: 40%;">
+			<b>Sign up</b>
+		</div>
+		<hr>
+		<div id="container">
+			<form id="form" onsubmit="return validate()">
+				<div id="row" style="position: relative;">
+					<input type="text" id="first" placeholder="First Name">
+					<label class="warn" id="errorFN">*invalid name</label>
+					<input type="text" id="middle" placeholder="Middle Name(Optional)">
+					<label class="warn" id="errorMN">*invalid name</label>
+					<input type="text" id="last" placeholder="Last Name">
+					<label class="warn" id="errorLN">*invalid name</label>
+				</div>
+				<div id="row" style="position: relative;padding: 5px 0px 5px 10px;height: 40px;">
+					<input type="text" onfocus="fullname()" name="fullusername" id="full" placeholder="Full Name" readonly>
+				</div>
+				<div id="row" style="position: relative;">
+					<input type="text" id="user" placeholder="Username">
+					<label class="warn" id="errorUSER">*required field</label>
+				</div>
+				<div id="row" style="position: relative;">
+					<select id="count">
+						<option style="text-align:center;">(+10)USA</option>
+						<option style="text-align:center">(+91)Ind</option>
+					</select>
+					<input id="num" type="text" placeholder="Phone"><br>
+					<label class="warn" id="errorPH">*invalid number format</label>
+				</div>
+				<div id="row" style="position: relative;">
+					<input type="date" id="dob">
+					<label class="warn" id="errorDOB">*required field</label>
+					<input onfocus="getAge()" type="number" id="age" placeholder="Age">
+				</div>
+				<div id="row" style="position: relative;">
+					<input type="password" id="pswd" placeholder="Password">
+					<img id="passimage" src="show.jpg" onclick="changepass()">
+					<label class="warn" id="errorPASS">*required field</label>
+				</div>
+				<div class="gender" id="row" style="height:50px">
+					<div>Gender :</div>
+					<div><span>Male</span> <input type="radio" name="r"></div>
+					<div><span>Female</span><input type="radio" name="r"></div>
+					<div><span>Others</span><input type="radio" name="r"></div>
+				</div>
+				<div id="row" style="position: relative;">
+					<input type="email" id="mail" placeholder="Email">
+					<label class="warn" id="errorMAIL">*invalid email</label>
+				</div>
+				<div id="row" style="position: relative;">
+					<textarea id="adrs" onkeyup="omitDigit()" placeholder="Address" ></textarea>
+					<label class="warn" id="errorMAIL">*requied field</label>
+				</div>
+				<div id="row" style="position: relative;">
+					<input onchange="filesize()" type="file" id="f" placeholder="Upload adhar"><br>
+					<label class="warn" id="errorFILE">*file size is too big(>20KB)!!</label>
+				</div>
+				<div id="row" style="position: relative;height: max-content;padding-top: 10px;">
+					<div id="hobdiv"><input type="text" id="hob" name="h" placeholder="Type your hobby.."><button id="opadd">&check;</button></div>
+					<ul id="list">
+						
+						
+					</ul>
+				</div>
+				<div class="termsCo" id="row">
+					<div><input class="terms" type="checkbox" id="maincheck" onclick="go()"><span>I agree the terms and conditions&nbsp;<label class="warn" id="errorTERMS">*required field</label></span></div>
+				</div>
+				<div class="SubRes" id="row" style="display: flex;flex-direction: row;height: 60px;">
+					<div class="b1">
+						<input type="submit" id="sub" value="Sign Up" disabled>
+						<input  type="reset" id="res" value="Clear">
+					</div>
+				</div>
+				<div id="row" style="position: relative;">
+					<label id="signin">Already have an account?<a href="login.html">Sign in<a></label>
+				</div>
+			</form>
+		</div>
+		<script type="text/javascript" src="formjs.js"></script>
+		<script type="text/javascript">
+			var add=document.getElementById("opadd");
+			add.addEventListener("click",additem,false);
+			var list=document.getElementById("list");
+			list.addEventListener("click",removeitem,false);
+			function additem(e){
+				e.preventDefault();
+				var f=document.getElementById("hob");
+				if(f.value!=""){
+					var l=document.createElement("li");
+					var text=document.createTextNode(f.value);
+					l.appendChild(text)
+
+					//button
+					var dbtn=document.createElement("button");
+					dbtn.setAttribute("class","delete");
+					var dtext=document.createTextNode("X");
+					dbtn.appendChild(dtext);
+
+					l.appendChild(dbtn);
+					
+					list.appendChild(l);
+				}
+				else{
+					f.placeholder="Type something..it cant be empty";
+					f.setAttribute("class","placeholdRed");
+					setTimeout(function(){
+						f.removeAttribute("class");
+						f.placeholder="Type your hobby.."
+					},3000);
+				}
+			}
+			function removeitem(e){
+				e.preventDefault();
+				if(e.target.classList.contains("delete")){
+					if(confirm("Are you sure you want to delete")){
+						var li=e.target.parentElement;
+						list.removeChild(li);
+					}
+				}
+				
+			}
+		</script>	
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <script type="text/javascript">
+		
+		function validate(){
+			alert("Are you sure to you want to submit!!!");
+			var c=0;
+			var fval=document.getElementById("first").value;
+			var lval=document.getElementById("last").value;
+			var mval=document.getElementById("middle").value;
+			var country=document.getElementById('count').value;
+			var ph=document.getElementById('num').value;
+			var mail=document.getElementById("mail").value;
+			var pass=document.getElementById("pswd").value;
+			var f=document.getElementById("f").files[0];
+			
+			pat=/[0-9`!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?~]/;
+			indPat=/^[6-9]\d{8}\d$/;
+			usaPat=/\d{3}-\d{3}-\d{4}/;
+			mailPat=/^[a-z][a-z0-9]+@[a-z]+\.([a-z]+\.)?[a-z]+$/i;
+			if(fval.length<3 || pat.test(fval)){
+				c=c+1;
+				document.getElementById("errorFN").style.visibility="visible";
+			}
+			if(lval.length<3 || pat.test(lval)){
+				c=c+1;
+				document.getElementById("errorLN").style.visibility="visible";
+			}
+			if(mval.length>0){
+				if(mval.length<3 || pat.test(mval)){
+					c=c+1;
+					document.getElementById("errorMN").style.visibility="visible";
+				}
+			}
+			if(country=='USA'){
+				if(usaPat.test(ph)==false){
+					c=c+1;
+					document.getElementById("errorPH").style.visibility="visible";
+				}
+			}
+			if(country=='Ind'){
+				if(indPat.test(ph)==false){
+					c=c+1;
+					document.getElementById("errorPH").style.visibility="visible";
+				}
+			}
+			if(pass.length<6 || !(/[a-z]/.test(pass)) || !(/[A-Z]/.test(pass)) || !(/\d/.test(pass)) || !(/\W/.test(pass))){
+				c=c+1;
+				document.getElementById("errorPASS").style.visibility="visible";
+			}
+			if(mailPat.test(mail)==false){
+				c=c+1;
+				document.getElementById("errorMAIL").style.visibility="visible";
+			}
+			// var arr=["c1","c2","c3","c4"];
+			// var checkCount=0;
+			// for(let i=0;i<4;i++){
+			// 	if(document.getElementById(arr[i]).checked){
+			// 		checkCount++;
+			// 	}
+			// }
+
+			// if(checkCount<2){
+			// 	c=c+1;
+			// }
+			if(f!=undefined && f.size>50480){
+				c=c+1;
+				document.getElementById("errorFILE").style.visibility="visible";
+			}
+			// setTimeout(errorFREE,3000);
+
+			if(c==0){
+				return true;
+			}
+			else{
+				return false;
+			}
+
+			
+		}
+		function addhobby(e){
+			e.preventDefault();
+			hob=document.getElementById("hob").value;
+			list=document.getElementById("hobby-list");
+			new_Li=document.createElement("li");
+			list.append(new_Li);
+			list.lastChild.innerHTML=hob;
+		}
+		function errorFREE(){
+			// document.getElementsByClass("warn").style.visibility="hidden";
+
+			document.getElementById("errorFN").style.visibility="hidden";
+			document.getElementById("errorLN").style.visibility="hidden";
+			document.getElementById("errorMN").style.visibility="hidden";
+			document.getElementById("errorPH").style.visibility="hidden";
+			document.getElementById("errorPASS").style.visibility="hidden";
+			document.getElementById("errorMAIL").style.visibility="hidden";
+			document.getElementById("errorFILE").style.visibility="hidden";
+		}
+		function fullname(){
+			var fval=document.getElementById("first").value;
+			var lval=document.getElementById("last").value;
+			var mval=document.getElementById("middle").value;
+			document.getElementById("full").value=(fval+" "+mval+" "+lval);
+		}
+		function getAge() {
+			var present=new Date();
+			var actual=new Date(document.getElementById("dob").value);
+			var s=present.getFullYear()-actual.getFullYear();
+			document.getElementById("age").value=s;
+
+		}
+		function changepass(){
+			var temp=document.getElementById("pswd");
+			if(temp.type=='password'){
+				temp.type="text";
+				document.getElementById("passimage").src="hide.jpg"
+			}
+			else{
+				temp.type="password";
+				document.getElementById("passimage").src="show.jpg"
+			}
+		}
+		function go() {
+			var j=document.getElementById("maincheck").checked;
+			if(j){
+				document.getElementById("sub").disabled=false;
+			}
+			else{
+				document.getElementById("sub").disabled=true;	
+			}
+		}
+		function resetConfirm(){
+			alert("Do you want to reset . . . Sure about that!!!");
+		}
+		function omitDigit(){
+			var val=document.getElementById("adrs").value;
+			var num=val.replace(/[0-9]/g,'');
+			document.getElementById('adrs').value=num;
+
+		}
+		function filesize(){
+			alert("file")
+			var f=document.getElementById("f").files[0];
+			if(f!=undefined && f.size>20480){
+				alert("file size is too big");
+			}
+		}
+	</script> -->
+
+	<!-- <script type="text/javascript">
+			var add=document.getElementById("opadd");
+			add.addEventListener("click",additem,false);
+			var list=document.getElementById("list");
+			list.addEventListener("click",removeitem,false);
+			function additem(e){
+				e.preventDefault();
+				var f=document.getElementById("hob").value;
+				var l=document.createElement("li");
+				var text=document.createTextNode(f);
+				l.appendChild(text)
+
+				//button
+				var dbtn=document.createElement("button");
+				dbtn.setAttribute("class","delete");
+				var dtext=document.createTextNode("X");
+				dbtn.appendChild(dtext);
+
+				l.appendChild(dbtn);
+				
+				list.appendChild(l);
+			}
+			function removeitem(e){
+				e.preventDefault();
+				if(e.target.classList.contains("delete")){
+					if(confirm("Are you sure you want to delete")){
+						var li=e.target.parentElement;
+						list.removeChild(li);
+					}
+				}
+				
+			}
+		</script>  -->
