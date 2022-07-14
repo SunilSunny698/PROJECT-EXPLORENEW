@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>ABOUT</title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<!-- <script type = "text/javascript" >  
+	    function preventBack() { window.history.forward(); }  
+	    setTimeout("preventBack()", 0);  
+	    window.onunload = function () { null };  
+	</script> -->
+	<style type="text/css">
+		body{
+			background-color: #eff0f5;
+		}
+		#container{
+			position: relative;
+			margin-top: 15px;
+			margin-left: 37%;
+			height: 400px;
+			width: 400px;
+			border-radius: 10px;
+			background-color: #eff0f5;
+			box-shadow: 4px 0px 7px 1px #CFCCC8, 0px 5px 7px 1px #CFCCC8, -10px 0px 10px -3px white,0 -10px 7px -3px white;
+		}
+		.social1,.social2,.social3{
+			height: 50px;
+			width: 50px;
+			position: absolute;
+			top: 270px;
+			left: 24%;
+			border-radius: 100%;
+			box-shadow: 3px 0px 7px 1px #CFCCC8, 0px 4px 7px 1px #CFCCC8, -10px 0px 10px -3px white,0 -10px 7px -3px white;
+			animation: rotate 3s infinite 1s normal forwards ;
+		}
+		.call{
+			height: 50px;
+			width: 50px;
+			position: absolute;
+			bottom: 10px;
+			right: 5px;
+			border-radius: 100%;
+			box-shadow: 3px 0px 7px 1px #CFCCC8, 0px 4px 7px 1px #CFCCC8, -10px 0px 10px -3px white,0 -10px 7px -3px white;
+			z-index: 2;
+			animation: rotate 3s infinte 1s normal forwards ;
+		}
+		#container span{
+			position: absolute;
+			bottom: 25px;
+			right: 20px;	
+		}
+		.social2{
+			position: absolute;
+			top: 270px;
+			left: 42%;
+		}
+		.social3{
+			position: absolute;
+			top: 270px;
+			left: 60%;
+		}
+		#image{
+			height: 150px;
+			width: 150px;
+			position: absolute;
+			top: 30px;
+			left: 30%;
+			border-radius: 100%;
+			box-shadow: 3px 0px 7px 1px #CFCCC8, 0px 4px 7px 1px #CFCCC8, -10px 0px 10px -3px white,0 -10px 7px -3px white;
+		}
+		#image img{
+			border-radius: 100%;
+			position: relative;
+			top: 14.3px;
+			left: 14px;
+			border: 1px ridge #cfccc8;
+			box-shadow: 0px 0px 3px 0px #cfccc8;
+		}
+		#info{
+			position: relative;
+			top: 190px;
+			left: 31%;
+			font-family: sans-serif;
+			font-size: 25px;
+			font-weight: 550;
+		}
+		#prop{
+			font-size: 18px;
+			position: relative;
+			top: 205px;
+			left: 28.5%;
+			color: #454543;
+		}
+		.fa {
+			border-radius: 100%;
+		  padding: 10px;
+		  font-size: 20px;
+		  width: 15px;
+		  text-align: center;
+		  text-decoration: none;
+		  animation: rotate 3s infinite 1s normal forwards ;
+		}
+
+		/* Add a hover effect if you want */
+		.fa:hover {
+		  opacity: 0.7;
+		}
+
+		/* Set a specific color for each brand */
+
+		/* Facebook */
+		.fa-facebook {
+		  border-radius: 100%;
+		  background: #eff0f5;
+		  color:  #3B5998;
+		  position: absolute;
+		  top: 275px;
+			left: 25.5%;
+		}
+
+		/* Twitter */
+		.fa-twitter {
+		  background: #eff0f5;
+		  color: #55ACEE;
+		  position: absolute;
+			top: 275px;
+			left: 43.5%;
+		}
+
+		.fa-instagram{
+		background: #eff0f5;
+		  color: red;
+		  position: absolute;
+		  top: 275px;
+		  left: 61.5%; 
+		}
+		@media screen and (max-width: 600px)
+		{
+			#container{
+				margin-left: 7%;
+			}
+		}
+		#num{
+			height: 20px;
+			width: 90px;
+			
+			position: absolute;
+			bottom: 23px;
+			right: 60px;
+			font-size: 18px;
+			font-weight: bold;
+			color: black;
+			text-shadow: 2px 2px 1px 3px #000;
+			opacity: 0;
+
+			
+		}
+		@keyframes rotate{
+			from{
+				transform: rotateX(0deg);
+			}
+			to{
+				transform: rotate(360deg);
+			}
+		}
+		
+		.showClass{
+			animation: show 1s 1 1s normal forwards;
+		}
+		.hideClass{
+			animation: fade 3s 1 1s normal forwards;
+		}
+		@keyframes fade{
+			from{
+				opacity: 1;
+			}
+			to{
+				opacity: 0;
+			}
+		}
+		@keyframes show{
+			from{
+				opacity: 0;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+	</style>
+</head>
+<body>
+	<div id="container">
+		<div id="image">
+			<img src="me.jpg" height="120" width="120">
+		</div>
+		<div class="social1"></div>
+		<div class="social2"></div>
+		<div class="social3"></div>
+		<div  class="call" onmouseover="show()" onmouseout="hide()"></div>
+		<div id="info">Sunil Sunny</div>
+		<div id="prop">Designer & Developer</div>
+		<div id="num" class="dummy">8688487539</div>
+		<a href="https://www.facebook.com/sunil.gembali.5" target="_blank" class="fa fa-facebook"></a>
+		<a href="https://twitter.com/GembaliSunil?t=84W9T_xr_4uDPYpARUMOhQ&s=09" target="_blank" class="fa fa-twitter"></a>
+		<a href="https://instagram.com/marvel_lover333?igshid=YmMyMTA2M2Y=" target="_blank" class="fa fa-instagram"></a>
+		<span id="callicon">&#128222;</span>
+		<!-- <div>N180698
+			 Gembali Sunil
+			 Contact : 8688487539
+		</div> -->
+	</div>
+	<script type="text/javascript">
+		function show(){
+			var k=document.getElementById("num");
+
+			k.removeAttribute("class");
+			k.setAttribute("class","showClass");
+		}
+		function hide(){
+			var k=document.getElementById("num");
+			k.removeAttribute("class");
+			
+		}
+	</script>
+</body>
+</html>

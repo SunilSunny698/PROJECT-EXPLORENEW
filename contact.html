@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Contact</title>
+	<style type="text/css">
+		body{
+			background-color: #eff0f5;
+			width: 100%;
+		}
+		#contContainer{
+			position: relative;
+			margin: 20px 65px;
+			width: 90%;
+			height: 500px;
+			border: 1px solid;
+			border-radius: 10px;
+			background-color: #eff0f5;
+			box-shadow: 4px 0px 7px 1px #CFCCC8, 0px 5px 7px 1px #CFCCC8, -10px 0px 10px -3px white,0 -10px 7px -3px white;
+			display: flex;
+			flex-direction: row;
+		}
+		#mapcont{
+			width: 60%;
+			height: 95%;
+			margin: 10px;
+		}
+		#formcont{
+			position: relative;
+			padding-top: 80px;
+			width: 40%;
+		}
+		.main{
+			margin-top: 10px;
+			width: 450px;
+			height:430px;
+			background-color:#CFCCC8;
+			border: 1px solid white;
+			border-radius: 10px;
+			box-shadow: 0px 0px 20px 1px black;
+			margin-left: 33%;
+			
+		}
+		.main div{
+			padding-top: 20px;
+			padding-left: 10px;
+		}
+		.main div b{
+			color:#000;
+			
+			font-size: 30px;
+
+		}
+		.row{
+			display: flex;
+			flex-direction: row;
+			width: 80%;
+			border: 1px solid;
+			height: 40px;
+			padding: 0px;
+		}
+		.form-label{
+			width: 20%;
+		}
+		.form-control{
+
+			width: 70%;
+		}
+		input[type=text],input[type=email],input[type=number]{
+
+			width: 70%;
+			height: 30px;
+			border: 1px solid #fff;
+			border-radius: 60px;
+			background-color: #e9eef2;
+			font-weight: bold;
+			text-indent: 20px;
+		}
+		#forgot{
+			font-size: 14px;
+			margin-left: 165px;
+			padding: 0px;
+			color: #3c4852;
+			margin-top: 10px;
+			/*border: 1px solid;*/
+			width: 45%;
+		}
+		#forgot a{
+			color: black;
+			font-weight: bold;
+			text-decoration: underline;
+
+		}
+		input[type=submit]{
+			width: 71%;
+			height: 30px;
+			background-color: orange;
+			border-radius: 60px;
+			border: 1px solid orange;
+			margin-left: 57px;
+			margin-top: 33px;
+			font-weight: bold;
+		}
+		input[type=submit]:hover{
+			border: 1px solid black;
+		}
+		#signup{
+			/*border: 1px solid;*/
+			width: 35%;
+			height: 20px;
+			padding: 0px;
+			font-size: 14px;
+			position: relative;
+			top: 65px;
+			left: 140px;
+		}
+		#go{
+			width: 35%;
+			height: 20px;
+			padding: 0px;
+			font-size: 14px;
+			position: relative;
+			color: black;
+			font-weight: bold;
+			top: 70px;
+			left: 160px;
+			text-decoration:none;
+		}
+		#go a{
+			text-decoration: none;
+		}
+		#go a:hover{
+			text-decoration: underline;
+		}
+		.warn{
+			font-size: 11px;
+			color: red;
+			font-weight: bold;
+			/*border: 1px solid;*/
+			margin-left: 75px;
+			display: none;
+		}
+		#alert{
+			font-size: 14px;
+		}
+		@media screen and (max-width: 600px)
+		{
+			#contContainer{
+				margin: 0px 20px;
+				height: 1100px;
+				display: flex;
+				flex-direction: column-reverse;
+			}
+			#formcont{
+				padding-top: 5%;
+				width: 100%;
+				height: 50%;
+				/*border: 1px solid;*/
+			}
+			#mapcont{
+				margin: 20px;
+				width: 90%;
+				height: 50%;
+				/*border: 1px solid;*/
+			}
+		}
+		#formcont h1{
+			font-size: 30px;
+			margin-left: 30%;
+			/*border: 1px solid;*/
+			width: max-content;
+		}
+		#formcont div{
+			width: max-content;
+			position: absolute;
+			bottom: 30px;
+			right: 100px;
+
+		}
+		
+		.spannum{
+			margin-left: 76px;
+		}
+		#formcont div span{
+			font-size: 15px;
+			font-weight: bold;
+
+		}
+		#formcont div span:hover{
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	</style>
+</head>
+<body>
+	<div id="contContainer">
+		
+		<div id="formcont">
+			<h1>Contact Form</h1>
+			<form onsubmit="return validate()">
+
+				<label class="warn" id="alert" style="margin-left: 160px;color: green;font-weight: bold;">Success login &check;</label>
+				<input style="margin-left:57px ;margin-top: 10px;" id="req" type="text" name="username" placeholder="Request"><br>
+				<label class="warn" id="errorUSER">*required field</label>
+				<input style="margin-left:57px ;margin-top: 20px;" id="number" type="number" name="pass" placeholder="Phone number">
+				<label  class="warn" id="errorPASS">*required field</label>
+				<input style="margin-left:57px ;margin-top: 20px;" id="gmail" type="email" name="pass" placeholder="Email">
+				<label  class="warn" id="errorPASS">*required field</label>
+				<input type="submit" name="submit" value="Send">
+				
+			</form>
+			<div>
+				<hr><span class="spannum">+91 8688487539 &#128222;</span><br>
+				<span class="spanmail">sunilsunny6520@gmail.com &#128231;</span><hr>
+				
+			</div>
+		</div>
+		<div id="mapcont">
+			<iframe id="imap" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d30558.61759303424!2d80.82703806209909!3d16.78527064769276!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a3675cbf6a62db3%3A0x342925c018a01e74!2sNuzividu%2C%20Andhra%20Pradesh!5e0!3m2!1sen!2sin!4v1657522460597!5m2!1sen!2sin" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+		</div>
+	</div>
+	<script type="text/javascript">
+		function validate(){
+			var r=document.getElementById("req").value;
+			var n=document.getElementById("number").value;
+			var g=document.getElementById("gmail").value;
+			if(r.length>0 && n.length>0 && g.length>0){
+				alert("Your request has been sent");
+				return true;
+			}
+			return false;
+		}
+	</script>
+</body>
+</html>
